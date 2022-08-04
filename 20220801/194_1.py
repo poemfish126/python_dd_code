@@ -16,6 +16,7 @@ class Solution:
         positions = {i: [] for i in 'abcdefghijklmnopqrstuvwxyz'}
         for i in range(len(str)):
             positions[str[i]].append(i)
+        print(positions)
 
         for word in dict:
             if self.is_subsequence(positions, word, str):
@@ -29,26 +30,27 @@ class Solution:
             if i == -1:
                 break
             j += 1
+
         return j == len(word)
 
-    def find_next(self, c_l: List, index: int) -> int():
-        if not c_l:
-            return -1
+
+    def find_next(self, c_l: List, position: int) -> int:
         start, end = 0, len(c_l) - 1
         while start + 1 < end:
             mid = (start + end) // 2
-            if c_l[mid] > index:
+            if c_l[mid] > position:
                 end = mid
             else:
                 start = mid + 1
-        if c_l[start] >= index:
+        if c_l[start] >= position:
             return c_l[start]
-        if c_l[end] >= index:
+        if c_l[end] >= position:
             return c_l[end]
         return -1
 
 
-str = "bcogtadsjofisdhklasdj"
-dict = ["book", "code", "tag"]
+str = "nmownhiterer"
+dict = ["nowhere", "monitor", "moniter"]
 s = Solution()
 print(s.find_words(str, dict))
+["nowhere", "moniter"]
