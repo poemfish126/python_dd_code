@@ -1,7 +1,7 @@
-import collections
 from typing import (
     List,
 )
+import collections
 from lintcode.TreeNode import *
 
 """
@@ -14,14 +14,16 @@ class TreeNode:
 
 
 class Solution:
+    """
+    @param root: the root of the given tree
+    @return: the values of the nodes you can see ordered from top to bottom
+    """
 
-    @staticmethod
-    def level_order(root: TreeNode) -> List[List[int]]:
+    def right_side_view(self, root: TreeNode) -> List[int]:
         if root is None:
             return []
         result = []
         queue = collections.deque([root])
-
         while queue:
             size = len(queue)
             line = []
@@ -35,8 +37,8 @@ class Solution:
                     queue.append(node.right)
             result.append(line)
 
-        return result
+        return [line[-1] for line in result]
 
 
-# print(s.level_order(TreeNode().deserialize("1,#,2,3,#,#,#")))
-print(Solution.level_order(TreeNode().deserialize("1,2,3,4,#,#,#,#,#")))
+s = Solution()
+print(s.right_side_view(TreeNode().deserialize("1,#,2,3,#,#,#")))
