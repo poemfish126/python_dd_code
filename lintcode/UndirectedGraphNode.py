@@ -30,3 +30,6 @@ class UndirectedGraphNode:
 
 
 node431 = UndirectedGraphNode(1).deserialize("1,2,4#2,1,4#3,5#4,1,2#5,3")
+for val in node431:
+    val.label
+    print(val.label)

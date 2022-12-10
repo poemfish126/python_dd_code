@@ -38,14 +38,19 @@ class Solution:
                     queue.append((node.right, 1))
             all_line.append(line)
         result = []
-        result.extend(all_line[0][0])
-        result.extend([line[0][0] for line in all_line[1:-1] if line[0][1] < 0])
-        result.extend(all_line[-1][0])
-        right = [line[-1][0] for line in all_line[1:-1]]
-        right.reverse()
-        result.extend(right)
+        # put in the first line
+        top = all_line[0][0]
+        result.append(top[0])
+        left = [line[0][0] for line in all_line[1:-1] if line[0][1] < 0]
+        if left:
+            result.extend(left)
+        result.extend([line[0] for line in all_line[-1]])
+        right = [line[-1][0] for line in all_line[1:-1] if line[-1][1] > 0 or len(line) > 1]
+        if right:
+            right.reverse()
+            result.extend(right)
         return result
 
 s = Solution()
-print(s.boundary_of_binary_tree(TreeNode().deserialize("1,2,3,4,5,6,#,#,#,7,8,9,10,#,#,#,#,#,#,#,#")))
-print(s.boundary_of_binary_tree(TreeNode().deserialize("1,#,2,3,#,#,#")))
+# print(s.boundary_of_binary_tree(TreeNode().deserialize("1,2,3,4,5,6,#,#,#,7,8,9,10,#,#,#,#,#,#,#,#")))
+print(s.boundary_of_binary_tree(TreeNode().deserialize("1,#,2,3,4,#,#,#,#")))
