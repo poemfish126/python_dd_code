@@ -22,26 +22,13 @@ class Solution:
     def clone_graph(self, node: UndirectedGraphNode) -> UndirectedGraphNode:
         root = node
         if node is None:
-            return node
+            return
+        nodes = self.getAllNodes(node)
+        
 
-        # use bfs algorithm to traverse the graph and get all nodes.
-        nodes = self.getNodes(node)
 
-        # copy nodes, store the old->new mapping information in a hash map
-        mapping = {}
-        for node in nodes:
-            mapping[node] = UndirectedGraphNode(node.label)
 
-        # copy neighbors(edges)
-        for node in nodes:
-            new_node = mapping[node]
-            for neighbor in node.neighbors:
-                new_neighbor = mapping[neighbor]
-                new_node.neighbors.append(new_neighbor)
-
-        return mapping[root]
-
-    def getNodes(self, node):
+    def getAllNodes(self, node):
         q = collections.deque([node])
         result = set([node])
         while q:

@@ -1,7 +1,7 @@
 import collections
 
 
-class UndirectedGraphNode:
+class DirectedGraphNode:
     def __init__(self, x):
         self.label = x
         self.neighbors = []
@@ -17,7 +17,7 @@ class UndirectedGraphNode:
                 for val in star.split(',')
             ]
             if bfs_order[0] not in values:
-                values[bfs_order[0]] = UndirectedGraphNode(bfs_order[0])
+                values[bfs_order[0]] = DirectedGraphNode(bfs_order[0])
         for star in data.split('#'):
             bfs_order = [
                 int(val) if val != '#' else None
@@ -28,7 +28,5 @@ class UndirectedGraphNode:
 
         return values.values()
 
-
-node431 = UndirectedGraphNode(1).deserialize("1,2,4#2,1,4#3,5#4,1,2#5,3")
-
+node176 = DirectedGraphNode(1).deserialize("1,2,4#2,3,4#4,5 #3#5")
 

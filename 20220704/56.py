@@ -34,4 +34,6 @@ class Solution:
 
 a = [1, 2, 13, 7, 8, 5]
 s = Solution()
-print(s.two_sum(a, 10))
+# print(s.two_sum(a, 10))
+numbers = [0, 4, 3, 0]
+print(s.two_sum(numbers, 0))
