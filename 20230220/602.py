@@ -29,6 +29,6 @@ class Solution:
 
 
 a = [[4, 5], [4, 6], [6, 7], [2, 3], [1, 1]]
-a = [[5, 4], [6, 4], [6, 7], [2, 3]]print
+a = [[5, 4], [6, 4], [6, 7], [2, 3]]
 s = Solution()
 print(s.max_envelopes(a))
