@@ -8,11 +8,13 @@ class Solution:
         dp = [sys.maxsize] * (n + 1)
         dp[0] = 0
         for i in range(1, n + 1):
-            max_j = int(i ** 0.5) + 1
-            for j in range(1, max_j):
+            j = 1
+            while j * j <= i:
                 dp[i] = min(dp[i], dp[i - j * j] + 1)
+                j += 1
+
         return dp[n]
 
 
 s = Solution()
-print(s.sum_squares(13))
+print(s.sum_squares(17))
